@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Search Results</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/static/css/result.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	</head>
+	<body>
+
+		<div class="container">
+		    <header class="jumbotron">
+		        <div class="container">
+		            <h1 style="color: white;">RECIPE HELPER</h1>
+		            <p style="color: wheat;">My Liked Dishes</p>
+		        </div>
+		    </header>
+		    <a href="/index"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>Back</a>
+		    
+		    <h2>Favourite Dishes</h2>
+		    
+		    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+		        
+				{% for like in likes %}					
+		            <div class="col-md-3 col-sm-6">
+		                <div class="thumbnail">		                   
+		                    <div class="caption">
+		                        <h4>{{ like[1] }}</h4>
+		                    </div>
+		                    <p>
+		                        <a href="/recipe/{{ like[0]}}" class="btn btn-primary">More Info</a>
+		                    </p>
+		                    <p>
+		                        <a href="/unlike/{{ like[0]}}" class="btn btn-primary">Remove</a>
+		                    </p>
+		                </div>
+		                
+		            </div>	    						
+				{% endfor %}
+		    </div>
+		</div>
+	</body>
+</html>

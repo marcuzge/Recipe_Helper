@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Search Results</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../static/css/result.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	</head>
+	<body>
+
+		<div class="container">
+		    <header class="jumbotron">
+		        <div class="container">
+		            <h1 style="color: white;">RECIPE HELPER</h1>
+		            <p style="color: wheat;">Search Results</p>
+		            {% if  session['email'] %}
+		            <a href="/account" style="text-decoration: none; color: white; margin-left: 90%;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Account</a>
+		            {% endif %}
+		        </div>
+		    </header>
+		    <a href="/index"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>Back</a>
+		    
+		    <h2>Dishes</h2>
+		    
+		    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+		        
+				{% for content in contents %}					
+		            <div class="col-md-3 col-sm-6">
+		                <div class="thumbnail">
+		                    <img src="{{ content['recipe']['image'] }}"></img>
+		                    <div class="caption">
+		                        <h4>{{ content['recipe']['label'] }}</h4>
+		                    </div>
+		                    <p>
+		                        <a href="/recipe/{{ content['recipe']['uri'].split('_')[1] }}" class="btn btn-primary">More Info</a>
+		                    </p>
+		                </div>
+		                
+		            </div>	    						
+				{% endfor %}
+		    </div>		    	
+
+	</body>
+</html>

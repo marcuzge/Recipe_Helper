@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Search Results</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/result.css" />
+
+
+	</head>
+
+	<body>
+
+		<div class="container">
+			 <header class="jumbotron">
+		        <div class="container">
+		            <h1 style="color: white;">{{ dish['label'] }}</h1>
+		            {% if  session['email'] %}
+		            <a href="/account" style="text-decoration: none; color: white; margin-left: 90%;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Account</a>
+		            {% endif %}
+		        </div>
+		    </header>
+
+		    <div class="row row-offcanvas row-offcanvas-right">
+		    	<div class="col-12 col-md-9">
+					<div style="margin-bottom: 120px">
+			    		<div style="float: left;">
+						<img style="display: block; margin: auto;" class="img-thumbnail" src="{{ dish['image'] }}"></img>
+		    			
+			    		</div>
+			    		<div>
+				    		<h2 style="text-align: center;">Basic Information</h2>
+				    		<h3 style="text-align: center;">Calories: {{ "{0:.2f}".format(dish['calories']) }}</h3>
+				    		<h3 style="text-align: center;">Follow the Steps Here: <span class="glyphicon glyphicon-book" aria-hidden="true"></span> <a target="_blank" href="{{ dish['url'] }}">Instructions</a> </h3>	
+				    				    		<!-- what I add -->
+				    		<h3 style="text-align: center;">
+				    		<form action="/search" method="post">
+				    		<input type="hidden" name="searchfood" value="{{ dish['label'] }}">
+				    		<label class = "submit-label" for="name">Don't want to cook?</label>
+				    		<input type="submit" class= "submit-button" name="submit" value="Go and find restaurants around!">
+				    		</form>
+				    		</form>
+				    		</h3>
+							{% if  session['email'] %}
+						    {%if like == False %}
+						    <h3 style="text-align: center;">Add to My Favourites: <a href="/like/{{id}}/{{dish['label']}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+						    {% endif %}
+						    {%if like == True %}	
+							<h3 style="text-align: center;">Remove from Favourites: <a href="/unlike/{{id}}">
+							<i class="fa fa-heart" aria-hidden="true"></i></a> </h3>				    
+						    {% endif %}
+							{% endif %}
+			    		</div>
+			    							
+					</div>
+		
+
+
+
+
+		    		<!-- what I add -->
+		    		<h3>Diet: </h3>
+		    		<ul class="list-group">
+						{% for dietLabel in dish['dietLabels'] %}					
+								<li class="list-group-item">{{ dietLabel }}</li>
+						{% endfor %}
+					</ul>
+					<h3>Healthy Indicator:</h3>
+					<ul class="list-group">
+						{% for healthLabel in dish['healthLabels'] %}					
+							<li class="list-group-item">{{ healthLabel }}</li>
+						{% endfor %}
+					</ul>
+
+					<h3>Ingredients:</h3>
+					<table class="table table-striped">
+					  <thead>
+					    <tr>
+					      <th style="text-align: center;" scope="col">Ingredient</th>
+					      <th style="text-align: center;" scope="col">Buy Now</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	{% for ingredientLine in dish['ingredientLines'] %}	
+						    <tr style="text-align: center;">
+						      <td>{{ ingredientLine }}</td>
+						      <td><a target="_blank" href="https://primenow.amazon.com/search?k={{ ingredientLine }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></td>
+						    </tr>
+						{% endfor %}
+					  </tbody>
+					</table>		    		
+		    	</div>
+
+
+		    	<div class="col-6 col-md-3 sidebar-offcanvas">
+		    		<h3>Nutritions</h3>
+		    		<table class="table table-striped">
+					  <thead>
+					    <tr>
+					      <th scope="col">Label</th>
+					      <th scope="col">Quantity</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	{% for nutrition in dish['digest'] %}
+						    <tr>
+						      <td>{{ nutrition['label'] }}</td>
+						      <td>{{ "{0:.2f}".format(nutrition['total']) }}{{ nutrition['unit'] }}</td>
+						    </tr>
+						{% endfor %}
+					  </tbody>
+					</table>
+
+		    		
+		    	</div>
+
+		    </div>
+
+			
+		</div>
+
+			<!-- Scripts -->
+			<script src="/static/js/jquery.min.js"></script>
+			<script src="/static/js/jquery.scrollex.min.js"></script>
+			<script src="/static/js/jquery.scrolly.min.js"></script>
+			<script src="/static/js/skel.min.js"></script>
+			<script src="/static/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../static/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/static/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+.jumbotron {
+	background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/bg.jpg");
+	background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/bg.jpg");
+	background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/bg.jpg");
+	background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/bg.jpg");
+}
+
+.submit-label{
+	margin-right: 20px;
+}
+
+.submit-button{
+	border-style: groove;
+	border-radius: 5px;
+}
+

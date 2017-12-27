@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Restaurants Nearby</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../static/css/main.css" />
+		<link rel="stylesheet" href="../static/css/return_search.css" />
+		<link rel="stylesheet" href="../static/css/map.css" />
+		{{mymap.js}}
+
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="/index">Recipe Helper</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="/index">Home</a></li>
+											{% if not session['email'] %}
+											<li><a href="/sign_up">Sign Up</a></li>
+											<li><a href="/login">Log In</a></li>
+											{% endif %}		
+											{% if  session['email'] %}
+											<li><a href="/account">{{ session['user'] }}</li>
+											<li><a href="/logout">Log Out</a></li>
+
+											{% endif %}	
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2>Restaurants Nearby</h2>
+							<p>The restaurants below all provide <em>{{ food_name }}</em> .</p>
+						</header>
+
+						<section class="wrapper style5">
+							<div>
+								<div class="outer-container">
+									<div class="left-column-container" style="margin-left: 100px;">
+									{% for restaurant in restaurants %}
+									<!-- <a href="mailto:{{ address }}">{{ restaurant }}</a>
+									<p></p>
+									<hr /> -->
+										<div class="first-container">
+											<div class="sec-left-container">
+												<div class="restaurant-image">
+													<img class="photo-box-img" height="90" src="{{ restaurant['image_url'] }}"  width="90">
+												</div>
+												<div class="main-attribute">
+													<p>
+														<span class="number-of-restaurant">
+															{{ restaurant['index'] }}  
+														</span>
+															<a target="_blank" class="restaurant-name" href="{{ restaurant['url'] }}">{{ restaurant['name'] }}</a>
+													</p>
+													<p>
+														<span class="rating">{{ restaurant['rating'] }} /5 </span>
+														<span class="reviews"> {{ restaurant['review_count'] }} reviews</span>
+													</p>	
+													<p>
+														<span class="restaurant-price">{{ restaurant['price'] }} </span> ▪
+														<span class="categories">
+															 {% for category in restaurant['categories'] %}
+										                     {{ category['title'] }}
+										                     .
+										                     {% endfor %}
+														</span>
+													</p>
+												</div>
+												<div class="secondary-attribute"></div>
+											</div>
+											<div class="sec-right-container" style="margin-right: 50px;">
+												<p class="city">
+													{{ restaurant['location']['city'] }}
+												</p>
+												<p class="display_address">
+													{% for address in restaurant['location']['display_address'] %}
+										            {{ address}} <br>
+										            {% endfor %}
+												</p>
+												<p class="display_phone">
+													{{ restaurant['display_phone'] }}
+												</p>
+											</div>
+										</div>
+										<hr>
+									{% endfor %}
+									</div>
+									<div class="right-column-container">
+										
+						
+							
+								<div id="outer">
+								<div id="map">
+    								<div id="sticker">{{mymap.html}}
+    								</div>
+    							</div>
+    							</div>
+									
+							</div>
+						</section>
+					</article>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Team X</li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../static/js/jquery.min.js"></script>
+			<script src="../static/js/jquery.scrollex.min.js"></script>
+			<script src="../static/js/jquery.scrolly.min.js"></script>
+			<script src="../static/js/skel.min.js"></script>
+			<script src="../static/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../static/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/js/main.js"></script>
+			<script src="../static/js/jquery.sticky.js"></script>
+			<script>
+			  $(document).ready(function(){
+			    $("#sticker").sticky({topSpacing:80});
+			  });
+			</script>
+			<script type="text/javascript" src="../static/js/googlemap.js"></script>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+/* flex display */
+.outer-container{
+	display: flex;
+	flex-direction: row;
+}
+
+.left-column-container{
+	margin: 20px;
+	width: 900px;
+}
+
+.right-column-container{
+	margin: 20px;
+	width: 500px;
+	border-color: black;
+}
+
+.first-container{
+	display: flex;
+	flex-direction: row;
+}
+
+.sec-left-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main-attribute{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 380px;
+}
+
+.sec-right-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.number-of-restaurant{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.main-attribute>p{
+	margin: 0.25em;
+}
+/* the size relative to the parents' size*/
+
+.sec-right-container>p{
+	margin: 0.25em;
+}
+
+.restaurant-name{
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.rating{
+	color: red;
+}
+
+.restaurant-image{
+	margin:10px;
+}
+
+.restaurant-price{
+	color: #228B22;
+}
+
+
+
+
+

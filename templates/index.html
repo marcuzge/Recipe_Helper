@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Recipe Helper</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../static/css/main.css" />
+
+	</head>
+	<body class="landing">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="/index">Recipe Helper</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="/index">Home</a></li>
+											{% if not session['email'] %}
+											<li><a href="/sign_up">Sign Up</a></li>
+											<li><a href="/login">Log In</a></li>
+											{% endif %}		
+											{% if  session['email'] %}
+											<li><a href="/account">{{ session['user'] }}</li>
+											<li><a href="/logout">Log Out</a></li>
+									
+											{% endif %}	
+										
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<h2>Recipe Helper</h2>
+							<p>Helps you find the<br />
+							recipes you want.<br /></p>
+							<p>{{ notification }}</p>
+						</div>
+						<a href="#one" class="more scrolly">Let's go</a>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style1 special">
+						<div class="inner">
+							<div id="search-container">
+								<h2>Search:</h2>
+								<form method="get" action="{{ url_for('results') }}">
+								  <input type="text" name="searchInput" placeholder="e.g. potato, egg, beef or bean soup"><br>
+								    <div>
+									    <input type="radio" id="contactChoice1"
+									     name="choice" value="Ingredient">
+									    <label for="contactChoice1">Ingredient</label>
+
+									    <input type="radio" id="contactChoice2"
+									     name="choice" value="Recipe">
+									    <label for="contactChoice2">Recipe</label>
+
+									</div>
+								  <input type="submit">
+								</form>
+							</div>
+
+							{% if  data %}					
+								<h2 style="text-align: left">Top Searches:</h2>
+							{% endif %}
+							<div style="text-align: left">
+								
+
+							{% for content in data %}					
+								<span>
+				                    &bull;<a href="/results?searchInput={{content[0]}}" class="btn btn-primary">{{ content[0] }}</a>
+				             
+				                </span>
+
+				            {% endfor %}								
+							</div>
+							<div id="learn-more">
+								<a href="#two" id="learn-more" class="scrolly">Wanna Learn More?</a>
+							</div>
+							
+
+							
+						</div>
+
+					</section>
+    						
+
+				<!-- Two -->
+					<section id="two" class="wrapper alt style2">
+						<section class="spotlight">
+							<div class="image"><img src="../static/images/intro.jpg" alt="" /></div><div class="content">
+								<h2>Search anything you want<br /></h2>
+								<p>Find any recipes in mind, your dream of becoming a chief is just one click away</p>
+							</div>
+						</section>
+						<section class="spotlight">
+							<div class="image"><img src="../static/images/intro2.jpg" alt="" /></div><div class="content">
+								<h2>Find Resturants<br />
+								in one click</h2>
+								<p>Don't wanna cook? Easy! Find the resturants nearby that offers your craving dishes</p>
+							</div>
+						</section>
+
+					</section>
+
+				<!-- CTA -->
+					<section id="cta" class="wrapper style4">
+						<div class="inner">
+							<header>
+								<h2>about us</h2>
+								<p>We are Team X. This is our INFO 253 class project.</p>
+							</header>
+							<ul class="actions vertical">
+								<li><a href="#" class="button fit">Learn More</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; TEAM X</li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../static/js/jquery.min.js"></script>
+			<script src="../static/js/jquery.scrollex.min.js"></script>
+			<script src="../static/js/jquery.scrolly.min.js"></script>
+			<script src="../static/js/skel.min.js"></script>
+			<script src="../static/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../static/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/js/main.js"></script>
+
+	</body>
+</html>
