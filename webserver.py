@@ -19,7 +19,7 @@ from flask_googlemaps import Map
 # "static folder"
 app = Flask(__name__,static_url_path="/static")
 app.secret_key = "super secret key"
-GoogleMaps(app, key="AIzaSyC6r5ck_M8asysP_Cwrc_fwl_p6FNcRMDA")
+GoogleMaps(app, key="") #fill-in
 GOOGLE_MAPS_API_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
 
 def get_connection():
@@ -34,7 +34,7 @@ def create_links_table():
     conn.commit()
     conn.close()
 app = Flask(__name__,static_url_path="/static")
-GoogleMaps(app, key="AIzaSyC6r5ck_M8asysP_Cwrc_fwl_p6FNcRMDA")
+GoogleMaps(app, key="") #fill-in
 
 app.config.from_object(__name__)
 app.secret_key = "super secret key"
@@ -72,7 +72,7 @@ def results():
     params = {
         'q': searchInput, # doesn't work if switched to searchInput
         'app_id': '8d20f746', #add api_id
-        'app_key': 'ac37f0274658b0f9b3d1282d82f82a6f', #add app_key
+        'app_key': '', #add app_key
         'from': '0',
         'to': '24'
     }
@@ -98,7 +98,7 @@ def show(id):
     param = {
         'q': id, 
         'app_id': '8d20f746', #add api_id
-        'app_key': 'ac37f0274658b0f9b3d1282d82f82a6f', #add a
+        'app_key': '', #add a
     }
   
     dish = requests.get('https://api.edamam.com/search', params=param).json()
@@ -232,7 +232,7 @@ def search_res():
 
 #Fill app key details from Yelp
     client_id = 'B5riMw77DRaQxQigXFy9yA'
-    client_secret = 'S5I9tflt7De6pRsYXE5vjiFtGqUQdJzDLBlauMtIPjvblX2v1SOh4fpUJ2diItpb'
+    client_secret = '' #fill-in
 #Authenticate and get access token
     client = BackendApplicationClient(client_id=client_id)
     yelp = OAuth2Session(client=client)
