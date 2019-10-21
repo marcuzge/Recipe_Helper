@@ -26,7 +26,7 @@ requests-oauthlib==0.8.0
 ruamel.yaml==0.15.35
 six==1.10.0
 urllib3==1.22
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 yelp==1.0.2
 asn1crypto==0.22.0
 certifi==2017.7.27.1
@@ -56,5 +56,5 @@ requests-oauthlib==0.8.0
 ruamel.yaml==0.15.35
 six==1.10.0
 urllib3==1.22
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 yelp==1.0.2
