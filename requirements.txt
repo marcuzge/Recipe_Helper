@@ -25,7 +25,7 @@ requests-futures==0.9.7
 requests-oauthlib==0.8.0
 ruamel.yaml==0.15.35
 six==1.10.0
-urllib3==1.22
+urllib3==1.26.5
 Werkzeug==0.12.2
 yelp==1.0.2
 asn1crypto==0.22.0
@@ -55,6 +55,6 @@ requests-futures==0.9.7
 requests-oauthlib==0.8.0
 ruamel.yaml==0.15.35
 six==1.10.0
-urllib3==1.22
+urllib3==1.26.5
 Werkzeug==0.12.2
 yelp==1.0.2
